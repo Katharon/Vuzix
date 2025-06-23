@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflows>
+    <workflow id="wf_1">
+        <supportedlanguages>
+            <lang>de</lang>
+            <lang>en</lang>
+        </supportedlanguages>
+        <name>
+            <de>Sturzalgorithmus</de>
+            <en>Falling algorithm</en>
+        </name>
+        <description>
+            <de>Ablauf bei Sturz eines Pflegeheimbewohners</de>
+            <de>Algorithm in case of the falling in nursing homes.</de>
+        </description>
+        <steps>
+            <step id="step_1">
+                <title>
+                    <de>Bewusstsein feststellen</de>
+                    <en>Observe consciousness</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Bewustseinszustand des Bewohners mit AVPU(Alert, Voice, Paint, Unconscious)-Schema
+                            feststellen
+                        </de>
+                        <en>Find out state of consciousness using the AVPU(Alert, Voice, Paint, Unconscious)-schema</en>
+                    </text>
+                </media>
+                <next>
+                    <condition>
+                        <de cond="AVPU: A, V, P">
+                            <value>step_2</value>
+                        </de>
+                        <en cond="AVPU: A, V, P">
+                            <value>step_2</value>
+                        </en>
+                    </condition>
+                    <condition>
+                        <de cond="AVPU: U">
+                            <value>step_8</value>
+                        </de>
+                        <de cond="AVPU: U">
+                            <value>step_8</value>
+                        </de>
+                    </condition>
+                </next>
+            </step>
+            <step id="step_2">
+                <title>
+                    <de>Körperliche Untersuchung / Schnelle Trauma Untersuchung</de>
+                    <en>Physical Examination / Fast Trauma Check</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Patient auf Verletzungen und Wunden untersuchen, Gespräch mit Patient und Schmerzquellen
+                            festzustellen
+                        </de>
+                        <en>Look for Wounds and sources of pain, talk to patient and ask if and where it hurts</en>
+                    </text>
+                </media>
+                <next>step_3</next>
+            </step>
+            <step id="step_3">
+                <title>
+                    <de>Aufstehen</de>
+                    <en>Getting back up</en>
+                </title>
+                <media>
+                    <text>
+                        <de>
+                            Mit Patient aufstehen / wieder hinsetzen / wiederhinlegen basiert auf dem Patienzustand.
+                        </de>
+                        <en>
+                            Get patient up based on current state. (Standing up, get back to sitting in chair oder
+                            laying in bed)
+                        </en>
+                    </text>
+                </media>
+                <next>step_4</next>
+            </step>
+            <step id="step_4">
+                <title>
+                    <de>Vitalwerte messen</de>
+                    <en>Measure vitals</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Vitalwerte messen: HF, SpO2, RR, Temp, BZ</de>
+                        <en>Measure Vitals: HR, SpO2, RR, Temp, BS</en>
+                    </text>
+                </media>
+                <next>
+                    step_5
+                </next>
+            </step>
+            <step id="step_5">
+                <title>
+                    <de>Beurteilung ob weiter Behandlung nötig</de>
+                    <en>Decision if further treatment necessary</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Beurteilung der Vitalwerte, Sturzmechanismus und Schmerzen des Patienten</de>
+                        <en>Judging of Vitals, Falling mechanism and Paint of the patient</en>
+                    </text>
+                </media>
+                <next>
+                    <condition>
+                        <de cond="Weitere Behandlung durch RD / im KH nötig">
+                            <value>step_6</value>
+                        </de>
+                    </condition>
+                    <condition>
+                        <de cond="Keine weitere Behandlung nötig">
+                            <value>step_7</value>
+                        </de>
+                    </condition>
+                </next>
+            </step>
+            <step id="6">
+                <title>
+                    <de>Rettungsdienst nachfordern</de>
+                    <en>Request Paramedics</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Rettungsdienst anrufen: 144 wählen</de>
+                        <en>Request Paramedics: Call 144</en>
+                    </text>
+                </media>
+                <next>step_7</next>
+            </step>
+            <step id="step_7">
+                <title>
+                    <de>Vorfall Dokumentieren</de>
+                    <en>Document Incident</en>
+                </title>
+                <media>
+                    <image>
+                        <de>media/images/documentation_de.png</de>
+                        <en>media/images/documentation_en.png</en>
+                    </image>
+                </media>
+                <next>0</next>
+            </step>
+            <step id="step_8">
+                <title>
+                    <de>Stabile Seitenlage</de>
+                    <en>Patient Sideways</en>
+                </title>
+                <media>
+                    <text>
+                        <de>Patient in die Stabile Seitenlage bringen</de>
+                        <en>Bring patient sideways so the airways is not in danger</en>
+                    </text>
+                </media>
+                <next>step_4</next>
+            </step>
+        </steps>
+    </workflow>
+</workflows>

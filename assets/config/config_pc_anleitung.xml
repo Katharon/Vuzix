@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflows>
+    <workflow id="wf_3">
+        <supportedlanguages>
+            <lang>de</lang>
+            <lang>en</lang>
+            <lang>pl</lang>
+        </supportedlanguages>
+        <name>
+            <de>PC Zusammenbauen</de>
+            <en>Build PC</en>
+            <en>Montaż komputera</en>
+        </name>
+        <description>
+            <de>Ablauf zum Zusammenbauen eines PCs.</de>
+            <de>Steps to build a PC.</de>
+            <pl>Procedura montażu komputera.</pl>
+        </description>
+        <steps>
+            <step id="step_1">
+                <title>
+                    <de>1. Gehäuse öffnen</de>
+                    <en>1. Open case</en>
+					<pl>1. otworzyć obudowę</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>Entferne die Seitenwände des Gehäuses, um Zugang zu erhalten.
+                        </de>
+                        <en>Remove the side panels of the housing to gain access.
+						</en>
+						<pl>Zdejmij boczne panele obudowy, aby uzyskać dostęp.
+						</pl>
+                    </text>
+                </media>
+                <next>step_2</next>
+            </step>
+			
+            <step id="step_2">
+                <title>
+                    <de>2. CPU ins Mainboard einsetzen</de>
+                    <en>2. Put CPU on Mainboard</en>
+                    <pl>2. włożyć procesor do płyty głównej</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>1 Öffne den CPU-Sockel-Hebel.
+							2 Setze die CPU vorsichtig in den Sockel ein, achte auf die Markierungen (z.B. eine Ecke mit Punkt).
+							3 Schließe den Hebel wieder.
+                        </de>
+                        <en>1 Open the CPU socket lever.
+							2 Carefully insert the CPU into the socket, paying attention to the markings (e.g. a corner with a dot).
+							3 Close the lever again.
+						</en>
+						<pl>1 Otwórz dźwignię gniazda procesora.
+							2 Ostrożnie włóż procesor do gniazda, zwracając uwagę na oznaczenia (np. narożnik z kropką).
+							3 Ponownie zamknij dźwignię.
+						</pl>
+                    </text>
+                </media>
+                <next>step_3</next>
+            </step>
+			
+            <step id="step_3">
+                <title>
+                    <de>3. RAM-Riegel einsetzen</de>
+                    <en>3. Install RAM</en>
+					<pl>3. wstawić pasek RAM</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>1 Öffne die vorgesehenen DIMM-Slots.
+							2 Stecke die RAM-Riegel richtig in die Slots, bis die Halteklammern einrasten und die Riegel fest sitzen.
+                        </de>
+                        <en>1 Open the DIMM slots provided.
+							2 Insert the RAM bars correctly into the slots until the retaining clips click into place and the bars are firmly seated.
+                        </en>
+						<pl>1 Otwórz dostarczone gniazda DIMM.
+							2 Włóż prawidłowo paski pamięci RAM do gniazd, aż zatrzaski zatrzasną się na miejscu, a paski zostaną mocno osadzone.
+						</pl>
+                    </text>
+                </media>
+                <next>step_4</next>
+            </step>
+			
+            <step id="step_4">
+                <title>
+                    <de>4. Entscheidung: Kühler montieren</de>
+                    <en>4. Decision what cooler</en>
+					<pl>4. decyzja: Zainstaluj chłodnicę</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>Wähle zwischen 1. Wasserkühlung oder 2. Boxkühler.
+						</de>
+                        <en>Choose between 1. water cooling or 2. box cooler.
+						</en>
+						<pl>Do wyboru jest 1. chłodzenie wodne lub 2. box cooler.
+						</pl>
+                    </text>
+                </media>
+                 <next>
+                    <condition>
+                        <de cond="1">
+                            <value>step_5</value>
+                        </de>
+						<en cond="1">
+                            <value>step_5</value>
+                        </en>
+						<pl cond="1">
+                            <value>step_5</value>
+						</pl>
+                    </condition>
+                    <condition>
+                        <de cond="2">
+                            <value>step_6</value>
+                        </de>
+						<en cond="2">
+                            <value>step_6</value>
+                        </en>
+						<pl cond="2">
+                            <value>step_6</value>
+						</pl>
+                    </condition>
+                </next>
+            </step>
+			
+            <step id="step_5">
+                <title>
+                    <de>5. Einbauen der Wasserkühlung</de>
+                    <en>5. Build in water cooling.</en>
+					<pl>5. instalacja systemu chłodzenia wodą</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>1 Setze die Backplate des Motherboards ins Gehäuse ein.
+							2 Montiere das Motherboard im Gehäuse und schraube es fest.
+							3 Befestige den Radiator am Deckel des Gehäuses mit Schrauben.
+							4 Trage Wärmeleitpaste auf die CPU auf.
+							5 Setze den CPU-Kühler (Wasserkühler) auf die CPU und verschraube ihn.
+							6 Schließe den CPU-Lüfterkabel am richtigen CPU-FAN-Anschluss an.
+						</de>
+                        <en>1 Insert the backplate of the motherboard into the housing.
+							2 Mount the motherboard in the housing and screw it tight.
+							3 Fasten the radiator to the cover of the housing with screws.
+							4 Apply thermal paste to the CPU.
+							5 Place the CPU cooler (water cooler) on the CPU and screw it in place.
+							6 Connect the CPU fan cable to the correct CPU FAN connector.
+						</en>
+						<pl>1 Włóż płytę tylną płyty głównej do obudowy.
+							2 Zamontuj płytę główną w obudowie i mocno ją przykręć.
+							3 Przymocuj radiator do pokrywy obudowy za pomocą śrub.
+							4 Nałóż pastę termoprzewodzącą na CPU.
+							5 Umieść chłodnicę CPU (chłodnicę wodną) na CPU i przykręć ją.
+							6 Podłącz kabel wentylatora CPU do odpowiedniego złącza CPU FAN.
+						</pl>
+                    </text>
+                </media>
+                <next>step_7</next>
+            </step>
+
+            <step id="step_6">
+                <title>
+                    <de>5. Einbauen des Boxkühlers</de>
+                    <en>5. Build in box cooling.</en>
+					<pl>5. instalacja box coolera</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>1 Trage Wärmeleitpaste auf die CPU auf.
+							2 Setze den CPU-Kühler auf die CPU und verschraube ihn.
+							3 Montiere das Motherboard im Gehäuse und schraube es fest.
+							4 Schließe den CPU-Lüfterkabel an den CPU-FAN-Anschluss an.
+						</de>
+                        <en>1 Apply thermal paste to the CPU.
+							2 Place the CPU cooler on the CPU and screw it in place.
+							3 Mount the motherboard in the housing and screw it tight.
+							4 Connect the CPU fan cable to the CPU FAN connection.
+						</en>
+						<pl>1 Nałóż pastę termoprzewodzącą na procesor.
+							2 Umieść cooler CPU na CPU i przykręć go.
+							3 Zamontuj płytę główną w obudowie i mocno ją przykręć.
+							4 Podłącz kabel wentylatora CPU do złącza CPU FAN.
+						</pl>
+                    </text>
+                </media>
+                <next>step_7</next>
+            </step>
+
+            <step id="step_7">
+                <title>
+                    <de>6. Netzteil einbauen</de>
+                    <en>6. Install power supply unit</en>
+					<pl>6. zainstalować zasilacz</pl>
+                </title>
+                <media>
+                    <text>
+						<de>1 Verschraube das Netzteil im vorgesehenen Fach (oben oder unten).
+							2 Bereite die Kabel vor.
+						</de>
+						<en>1 Screw the power supply unit into the compartment provided (top or bottom).
+							2 Prepare the cables.
+						</en>
+						<pl>1 Przykręć zasilacz do przewidzianej do tego celu komory (górnej lub dolnej).
+							2 Przygotuj kable.
+						</pl>
+					</text>
+                </media>
+                <next>step_8</next>
+            </step>
+
+            <step id="step_8">
+                <title>
+                    <de>7. Entscheidung: Massenspeicher installieren</de>
+                    <en>7. Decision: Install mass storage</en>
+					<pl>7. decyzja: Zainstalować pamięć masową</pl>
+                </title>
+                <media>
+                    <text>
+                        <de>Wähle zwischen 1. 2,5" SSD / HDD oder 2. M.2 NVMe SSD.
+						</de>
+						<en>Choose between 1. 2.5" SSD / HDD or 2. M.2 NVMe SSD.
+						</en>
+						<pl>Do wyboru jest 1. dysk SSD / HDD 2,5" lub 2. dysk SSD M.2 NVMe.
+						</pl>
+					</text>
+                </media>
+				<next>
+                    <condition>
+                        <de cond="1">
+                            <value>step_9</value>
+                        </de>
+						<en cond="1">
+                            <value>step_9</value>
+                        </en>
+						<pl cond="1">
+                            <value>step_9</value>
+						</pl>
+                    </condition>
+                    <condition>
+                        <de cond="2">
+                            <value>step_10</value>
+                        </de>
+						<en cond="2">
+                            <value>step_10</value>
+                        </en>
+						<pl cond="2">
+                            <value>step_10</value>
+						</pl>
+                    </condition>
+                </next>
+            </step>
+			
+            <step id="step_9">
+                <title>
+                    <de>8. 2,5" SSD / HDD installieren</de>
+                    <en>8. Install 2,5" SSD / HDD</en>
+					<pl>8. zainstalować 2,5-calowy dysk SSD / HDD
+						</pl>
+                </title>
+                <media>
+                    <text>
+						<de>1 Montiere die SSD/HDD im Halterahmen oder Schacht.
+							2 Verbinde sie mit SATA-Strom- und SATA-Datenkabeln vom Netzteil und Mainboard.
+						</de>
+						<en>1 Mount the SSD/HDD in the mounting frame or bay.
+							2 Connect it with SATA power and SATA data cables from the power supply unit and mainboard.
+						</en>
+						<pl>1 Zamontuj dysk SSD/HDD w ramce montażowej lub wnęce.
+							2 Podłącz go za pomocą kabli zasilania SATA i danych SATA z zasilacza i płyty głównej.
+						</pl>
+					</text>
+                </media>
+                <next>step_11</next>
+            </step>
+			
+			<step id="step_10">
+                <title>
+                    <de>8. NVMe SSD installieren</de>
+                    <en>8. Install NVMe SSD </en>
+					<pl>8. zainstalować dysk SSD NVMe</pl>
+                </title>
+                <media>
+                    <text>
+						<de>1 Stecke die NVMe SSD direkt in den M.2-Slot auf dem Mainboard.
+							2 Fixiere sie mit der kleinen Schraube.
+						</de>
+						<en>1 Insert the NVMe SSD directly into the M.2 slot on the mainboard.
+							2 Secure it with the small screw.
+						</en>
+						<pl>1 Włóż dysk SSD NVMe bezpośrednio do gniazda M.2 na płycie głównej.
+							2 Zabezpiecz go za pomocą małej śrubki.
+						</pl>
+					</text>
+                </media>
+                <next>step_11</next>
+            </step>
+			
+			<step id="step_11">
+                <title>
+                    <de>9. Entscheidung: Grafikkarte installieren</de>
+                    <en>9. Decision: Set up a graphics card</en>
+					<pl>9. decyzja: Konfiguracja karty graficznej</pl>
+                </title>
+                <media>
+                    <text>
+						<de>Soll eine externe Grafikkarte installiert werden? (Ja/Nein)
+						</de>
+						<en>Should an external graphics card be installed? (Yes/No)
+						</en>
+						<pl>Czy należy zainstalować zewnętrzną kartę graficzną? (Tak/Nie)
+						</pl>
+					</text>
+                </media>
+                <next>
+                    <condition>
+                        <de cond="Ja">
+                            <value>step_12</value>
+                        </de>
+						<en cond="Yes">
+                            <value>step_12</value>
+                        </en>
+						<pl cond="Tak">
+                            <value>step_12</value>
+						</pl>
+                    </condition>
+                    <condition>
+                        <de cond="Nein">
+                            <value>step_13</value>
+                        </de>
+						<en cond="No">
+                            <value>step_13</value>
+                        </en>
+						<pl cond="Nie">
+                            <value>step_13</value>
+						</pl>
+                    </condition>
+				</next>
+            </step>
+			
+			<step id="step_12">
+                <title>
+                    <de>10. Grafikkarte installieren</de>
+                    <en>10. Install graphics card</en>
+					<pl>10. Zainstaluj kartę graficzną</pl>
+                </title>
+                <media>
+                    <text>
+						<de>1 Öffne den PCIe-Slot.
+							2 Entferne die Slot-Blende am Gehäuse.
+							3 Stecke die Grafikkarte in den PCIe-Slot, bis sie klickt.
+							4 Schraube die Karte im Gehäuse fest.
+							5 Schließe das PCIe-Stromkabel vom Netzteil an die Grafikkarte an.
+						</de>
+						<en>1 Open the PCIe slot.
+							2 Remove the slot cover on the housing.
+							3 Insert the graphics card into the PCIe slot until it clicks.
+							4 Screw the card into the housing.
+							5 Connect the PCIe power cable from the power supply unit to the graphics card.
+						</en>
+						<pl>1 Otwórz gniazdo PCIe.
+							2 Zdejmij pokrywę gniazda na obudowie.
+							3 Włóż kartę graficzną do gniazda PCIe aż do zatrzaśnięcia.
+							4 Przykręć kartę do obudowy.
+							5 Podłącz kabel zasilający PCIe z zasilacza do karty graficznej.
+						</pl>
+					</text>
+                </media>
+                <next>step_13</next>
+            </step>
+			
+			<step id="step_13">
+                <title>
+                    <de>11. Verkabelung</de>
+                    <en>11. Cabling</en>
+					<pl>11. okablowanie</pl>
+                </title>
+                <media>
+                    <text>
+						<de>1 Verbinde das Motherboard mit dem 24-Pin und 8-Pin EPS-Stromkabel.
+							2 Schließe die Gehäuselüfter an.
+							3 Verbinde das Frontpanel (Power, Reset, USB, Audio) gemäß dem Mainboard-Handbuch.
+						</de>
+						<en>1 Connect the motherboard with the 24-pin and 8-pin EPS power cable.
+							2 Connect the case fans.
+							3 Connect the front panel (power, reset, USB, audio) according to the motherboard manual.
+						</en>
+						<pl>1 Podłącz płytę główną za pomocą 24-stykowego i 8-stykowego kabla zasilającego EPS.
+							2 Podłącz wentylatory obudowy.
+							3 Podłącz panel przedni (zasilanie, reset, USB, audio) zgodnie z instrukcją płyty głównej.
+						</pl>
+					</text>
+                </media>
+                <next>step_14</next>
+            </step>
+			
+			<step id="step_14">
+                <title>
+                    <de>12. Gehäuse schließen</de>
+                    <en>12. Close case</en>
+					<pl>12. zamknięta obudowa</pl>
+                </title>
+                <media>
+                    <text>
+						<de>Schließe die Seitenwände des Gehäuses.
+						</de>
+						<en>Close the side panels of the housing.
+						</en>
+						<pl>Zamknij panele boczne obudowy.
+						</pl>
+					</text>
+                </media>
+                <next>0</next>
+            </step>
+        </steps>
+    </workflow>
+</workflows>

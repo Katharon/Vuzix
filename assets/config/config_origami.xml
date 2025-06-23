@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflows>
+    <workflow id="wf_origami">
+        <supportedlanguages>
+            <lang>de</lang>
+            <lang>jp</lang>
+            <lang>fr</lang>
+            <lang>es</lang>
+        </supportedlanguages>
+        <name>
+            <de>Origami Anleitung</de>
+            <jp>折り紙の作り方</jp>
+            <fr>Instructions Origami</fr>
+            <es>Instrucciones de Origami</es>
+        </name>
+        <description>
+            <de>Origami Anleitung zum falten einer Blütten</de>
+            <jp>花を折るための折り紙の作り方</jp>
+            <fr>Instructions d'origami pour plier une fleur</fr>
+            <es>Instrucciones de origami para plegar una flor</es>
+        </description>
+        <steps>
+            <step id="step_1">
+                <title>
+                    <de>Papier auswählen</de>
+                    <jp>用紙を選択してください</jp>
+                    <fr>Choisir le papier</fr>
+                    <es>Seleccionar papel</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Wähle ein quadratisches Blatt Papier.</de>
+                        <jp>正方形の紙を1枚選びます。</jp>
+                        <fr>Choisissez une feuille de papier carrée.</fr>
+                        <es>Elige una hoja de papel cuadrada.</es>
+                    </text>
+                </media>
+                <next>step_2</next>
+            </step>
+            <step id="step_2">
+                <title>
+                    <de>Falten in der Mitte</de>
+                    <jp>真ん中に折り目</jp>
+                    <fr>Plier au centre</fr>
+                    <es>Doblar por la mitad</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Falte das Papier diagonal, um eine Dreiecksform zu erhalten.</de>
+                        <jp>紙を斜めに折って三角形を作ります。</jp>
+                        <fr>Pliez le papier en diagonale pour obtenir un triangle.</fr>
+                        <es>Dobla el papel en diagonal para formar un triángulo.</es>
+                    </text>
+                </media>
+                <next>step_3</next>
+            </step>
+            <step id="step_3">
+                <title>
+                    <de>Entscheidung</de>
+                    <jp>選択</jp>
+                    <fr>Décision</fr>
+                    <es>Decisión</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Möchtest du eine Blume mit mehreren Blütenblättern oder nur eine einzelne?</de>
+                        <jp>一輪の花にしますか？それとも花びらが複数ある花にしますか？</jp>
+                        <fr>Souhaitez-vous une fleur avec plusieurs pétales ou une seule ?</fr>
+                        <es>¿Quieres una flor con varios pétalos o solo una?</es>
+                    </text>
+                </media>
+                <next>
+                    <condition>
+                        <de cond="Einzelne Blüte">
+                            <value>step_4</value>
+                        </de>
+                        <jp cond="一輪の花">
+                            <value>step_4</value>
+                        </jp>
+                        <fr cond="Fleur unique">
+                            <value>step_4</value>
+                        </fr>
+                        <es cond="Flor única">
+                            <value>step_4</value>
+                        </es>
+                    </condition>
+                    <condition>
+                        <de cond="Mehrere Blütenblätter">
+                            <value>step_5</value>
+                        </de>
+                        <jp cond="複数の花びら">
+                            <value>step_5</value>
+                        </jp>
+                        <fr cond="Plusieurs pétales">
+                            <value>step_5</value>
+                        </fr>
+                        <es cond="Varios pétalos">
+                            <value>step_5</value>
+                        </es>
+                    </condition>
+                </next>
+            </step>
+            <step id="step_4">
+                <title>
+                    <de>Mehrere Blütenblätter</de>
+                    <jp>複数の花びら</jp>
+                    <fr>Plusieurs pétales</fr>
+                    <es>Varios pétalos</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Falte das Dreieck in der Mitte, um eine kleinere Spitze zu erhalten, und wiederhole den Vorgang, um mehrere Blätter zu formen.</de>
+                        <jp>三角形を中央で折って小さな先端を作り、その手順を繰り返して複数の花びらを作ります。</jp>
+                        <fr>Pliez le triangle en son centre pour obtenir une pointe plus petite, puis répétez l’opération pour former plusieurs pétales.</fr>
+                        <es>Dobla el triángulo por la mitad para obtener una punta más pequeña y repite el proceso para formar varios pétalos.</es>
+                    </text>
+                </media>
+                <next>step_5</next>
+            </step>
+            <step id="step_5">
+                <title>
+                    <de>Einzelne Blüte</de>
+                    <jp>一輪の花</jp>
+                    <fr>Fleur unique</fr>
+                    <es>Flor única</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Falte die Ecken des Dreiecks nach oben, um die Blütenblätter zu formen.</de>
+                        <jp>三角形の角を上向きに折り、花びらを形成します。</jp>
+                        <fr>Pliez les coins du triangle vers le haut pour former les pétales.</fr>
+                        <es>Dobla las esquinas del triángulo hacia arriba para formar los pétalos.</es>
+                    </text>
+                </media>
+                <next>step_6</next>
+            </step>
+            <step id="step_6">
+                <title>
+                    <de>Blumenstiel</de>
+                    <jp>花の茎</jp>
+                    <fr>Tige de la fleur</fr>
+                    <es>Tallo de la flor</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Falte den unteren Rand nach oben, um den Stiel zu bilden.</de>
+                        <jp>下の端を折り上げて茎を形成します。</jp>
+                        <fr>Pliez le bord inférieur vers le haut pour former la tige.</fr>
+                        <es>Dobla el borde inferior hacia arriba para formar el tallo.</es>
+                    </text>
+                </media>
+                <next>step_7</next>
+            </step>
+            <step id="step_7">
+                <title>
+                    <de>Fertigstellen</de>
+                    <jp>仕上げる</jp>
+                    <fr>Finition</fr>
+                    <es>Finalización</es>
+                </title>
+                <media>
+                    <text>
+                        <de>Öffne vorsichtig die Blütenblätter, um die Blume zu vollenden.</de>
+                        <jp>花びらを丁寧に開いて花を完成させます。</jp>
+                        <fr>Ouvrez délicatement les pétales pour compléter la fleur.</fr>
+                        <es>Abre suavemente los pétalos para completar la flor.</es>
+                    </text>
+                </media>
+                <next>0</next>
+            </step>
+        </steps>
+    </workflow>
+</workflows>

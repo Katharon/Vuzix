@@ -3,6 +3,8 @@
 // found in the LICENSE file.
 
 /// taken and adapted from https://pub.dev/packages/camera/example
+library;
+
 
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';

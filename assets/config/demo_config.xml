@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workflows>
+    <workflow id="2">
+        <supportedlanguages>
+
+        </supportedlanguages>
+        <name></name>
+        <description></description>
+        <steps>
+            <step id="XXX">
+                <title></title>
+                <media></media>
+                <next></next>
+            </step>
+        </steps>
+
+    </workflow>
+
+    <workflow id="3">
+        <supportedlanguages>
+
+        </supportedlanguages>
+        <name></name>
+        <description></description>
+        <steps>
+            <step id="XXX">
+                <title></title>
+                <media></media>
+                <next></next>
+            </step>
+        </steps>
+    </workflow>
+</workflows>

@@ -58,8 +58,9 @@ class _VuzixCarouselState extends State<VuzixCarousel> {
 
       // when using the carousel package, we need to animate to the new index
       // otherwise we just rebuild the row widget with new _selectedIndex
-      if (widget.buildWithCarouselPackage)
+      if (widget.buildWithCarouselPackage) {
         _controller.animateToPage(_selectedIndex);
+      }
     });
   }
 
