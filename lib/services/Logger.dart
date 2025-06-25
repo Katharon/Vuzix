@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:path_provider/path_provider.dart';
+import 'package:media_scanner/media_scanner.dart';
 
 class StepLogEntry {
   final String title;
@@ -23,10 +24,9 @@ class StepLogEntry {
 
   Map<String, dynamic> toJson() => {
         'title': title,
-        'start': start.toIso8601String(),
-        'end': end?.toIso8601String(),
-        'durationSeconds':
-            end?.difference(start).inSeconds,
+        'start': start.toIso8601String().split('.').first,
+        'end': end?.toIso8601String().split('.').first,
+        'durationSeconds': end?.difference(start).inSeconds,
         if (note != null) 'note': note,
         if (imagePath != null) 'imagePath': imagePath,
         if (stepType != null) 'type': stepType,
@@ -34,6 +34,7 @@ class StepLogEntry {
 }
 
 class WorkflowLogger {
+  Directory? _outputDirectory;
   final List<StepLogEntry> _steps = [];
   late DateTime _workflowStart;
   DateTime? _workflowEnd;
@@ -41,8 +42,11 @@ class WorkflowLogger {
 
   WorkflowLogger({required this.workflowTitle});
 
-  void startWorkflow() {
+  Directory get outputDirectory => _outputDirectory!;
+
+  Future<void> startWorkflow() async {
     _workflowStart = DateTime.now();
+    await createOutputDirectory();
   }
 
   void endWorkflow() {
@@ -50,7 +54,8 @@ class WorkflowLogger {
   }
 
   void logStepStart(String title, {String? stepType}) {
-    _steps.add(StepLogEntry(title: title, start: DateTime.now(), stepType: stepType));
+    _steps.add(
+        StepLogEntry(title: title, start: DateTime.now(), stepType: stepType));
   }
 
   void logStepEnd({String? note, String? imagePath}) {
@@ -63,18 +68,32 @@ class WorkflowLogger {
   Future<void> saveToFile() async {
     final data = {
       'workflowTitle': workflowTitle,
-      'startTime': _workflowStart.toIso8601String(),
-      'endTime': _workflowEnd?.toIso8601String(),
+      'startTime': _workflowStart.toUtc().toIso8601String().split('.').first,
+      'endTime': _workflowEnd?.toUtc().toIso8601String().split('.').first,
       'steps': _steps.map((e) => e.toJson()).toList(),
     };
 
-    final directory = await getExternalStorageDirectory();
-    final file = File('${directory!.path}/${_generateFilename()}.json');
-    await file.writeAsString(jsonEncode(data));
+    try {
+      final file = File('${_outputDirectory!.path}/log.json');
+      await file.writeAsString(jsonEncode(data));
+      await MediaScanner.loadMedia(path: file.path);
+    } catch (e) {
+      print('Fehler beim Schreiben oder Registrieren der Log-Datei: $e');
+    }
   }
 
   String _generateFilename() {
-    final timestamp = DateTime.now().toIso8601String().replaceAll(':', '-');
+    final timestamp =
+        DateTime.now().toIso8601String().replaceAll(':', '-').split('.').first;
     return '${workflowTitle}_$timestamp';
+  }
+
+  Future<void> createOutputDirectory() async {
+    final baseDir = await getExternalStorageDirectory();
+    final timestamp =
+        DateTime.now().toIso8601String().replaceAll(':', '-').split('.').first;
+    final folderName = '${workflowTitle}_$timestamp';
+    _outputDirectory = Directory('${baseDir!.path}/$folderName');
+    await _outputDirectory!.create(recursive: true);
   }
 }

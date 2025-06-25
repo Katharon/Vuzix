@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:mobile_scanner/mobile_scanner.dart';
 
 import 'main.dart';
 import 'ui/snackbar.dart';
@@ -18,7 +17,7 @@ class KeyStrokeDemoPage extends StatefulWidget {
 /* ------------------------------------------------------------------- */
 
 class _KeyStrokeDemoPageState extends State<KeyStrokeDemoPage> {
-  List<String> _keyEvents = [];
+  final List<String> _keyEvents = [];
   String? _qrCodeContent;
   String _lastSpoken = '';
 
@@ -33,6 +32,7 @@ class _KeyStrokeDemoPageState extends State<KeyStrokeDemoPage> {
 
       speak(event.name);
     });
+    
     _initSpeech();
   }
 
@@ -53,7 +53,7 @@ class _KeyStrokeDemoPageState extends State<KeyStrokeDemoPage> {
       return;
     }
 
-    await STT.instance.init(onSpeech: _handleSpeech);
+    // await STT.instance.init(onSpeech: _handleSpeech);
   }
 
   void _handleSpeech(String text) {
@@ -67,7 +67,7 @@ class _KeyStrokeDemoPageState extends State<KeyStrokeDemoPage> {
 
   @override
   void dispose() {
-    STT.instance.dispose();
+    // STT.instance.dispose();
     super.dispose();
   }
 
@@ -86,9 +86,11 @@ class _KeyStrokeDemoPageState extends State<KeyStrokeDemoPage> {
           SizedBox(
             height: 250,
             child: QRScanner(
-            height: 250,
-            onScan: _handleQR,
-          ),
+              rotateCamera: false,
+              height: 250,
+              isVisible: true,
+              onScan: _handleQR,
+            ),
           ),
           const Divider(),
           // Tasteneingaben und QR-Content

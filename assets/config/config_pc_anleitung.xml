@@ -43,20 +43,10 @@
                     <pl>2. włożyć procesor do płyty głównej</pl>
                 </title>
                 <media>
-                    <text>
-                        <de>1 Öffne den CPU-Sockel-Hebel.
-							2 Setze die CPU vorsichtig in den Sockel ein, achte auf die Markierungen (z.B. eine Ecke mit Punkt).
-							3 Schließe den Hebel wieder.
-                        </de>
-                        <en>1 Open the CPU socket lever.
-							2 Carefully insert the CPU into the socket, paying attention to the markings (e.g. a corner with a dot).
-							3 Close the lever again.
-						</en>
-						<pl>1 Otwórz dźwignię gniazda procesora.
-							2 Ostrożnie włóż procesor do gniazda, zwracając uwagę na oznaczenia (np. narożnik z kropką).
-							3 Ponownie zamknij dźwignię.
-						</pl>
-                    </text>
+                    <video>
+                        <de>assets/resources/video/install_cpu.mp4</de>
+                        <en>assets/resources/video/install_cpu.mp4</en>
+                    </video>
                 </media>
                 <next>step_3</next>
             </step>

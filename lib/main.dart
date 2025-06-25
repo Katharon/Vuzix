@@ -4,17 +4,14 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'display.dart';
+import 'package:flutter_vuzix/services/ConfigFileReader.dart';
 import 'services/WorkflowManager.dart';
 
 import 'input/device.dart';
 import 'input/input_handler.dart';
-import 'HelloWorldDemoPage.dart';
-import 'keystroke_demo_page.dart';
 
 import 'services/ConfigParser.dart';
 import 'services/XmlManager.dart';
-import 'services/WorkflowManager.dart';
 import 'ui/LandingPage.dart';
 import 'ConfigsOverview.dart';
 
@@ -64,20 +61,14 @@ Future<bool> setupDeviceAndInputHandling() async {
   inputHandler = InputHandler.fromDevice(theDevice);
   ServicesBinding.instance.keyboard.addHandler(inputHandler.onKey);
 
-  ServicesBinding.instance.keyboard.addHandler(inputHandler.onKey);
-
   // Workflows parsen und Manager bauen
-  final parser = ConfigParser(XmlManager(), language: 'de');
-  final workflows = [
-    ...await parser.parse('assets/config/config_pc_anleitung.xml'), 
-    ...await parser.parse('assets/config/config_med.xml')];
+  final xmlManager = XmlManager();
+  final configParser = ConfigParser(xmlManager, language: 'de');
+  final configReader = ConfigFileReader(parser: configParser);
+
+  final workflows = await configReader.readAllWorkflows('assets/config');
   workflowManager = WorkflowManager(workflows);
 
-  debugPrint('WORKFLOWS: ${workflows.length}');
-  debugPrint('STEPS   : ${workflows.first.steps.length}');
-  debugPrint('TITLE   : ${workflows.first.steps.first.title}');
-
-  // Falls keine Workflows, gilt das als „unsupported“
   return supported && workflows.isNotEmpty;
 }
 

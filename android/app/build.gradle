@@ -42,3 +42,7 @@ android {
 flutter {
     source = "../.."
 }
+
+dependencies {
+    implementation 'com.vuzix:sdk-speechrecognitionservice:1.91'
+}

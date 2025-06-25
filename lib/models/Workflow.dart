@@ -4,11 +4,13 @@ class Workflow {
   final List<String> languages;
   final List<WorkflowStep> steps;
   final Map<String, String> names;
+  final String sourceFile;
 
   const Workflow({
     required this.languages,
     required this.steps,
     required this.names,
+    required this.sourceFile
   });
 
   /// Hole Step per ID oder Index, wie es dir lieber ist.

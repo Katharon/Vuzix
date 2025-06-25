@@ -138,8 +138,8 @@
                 </title>
                 <media>
                     <image>
-                        <de>media/images/documentation_de.png</de>
-                        <en>media/images/documentation_en.png</en>
+                        <de>assets/resources/images/exmapleImage.jpg</de>
+                        <en>assets/resources/images/exmapleImage.jpg</en>
                     </image>
                 </media>
                 <next>0</next>

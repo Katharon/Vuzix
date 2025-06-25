@@ -1,4 +1,5 @@
 import 'package:flutter_vuzix/models/StepCondition.dart';
+import 'package:flutter_vuzix/models/VideoMedia.dart';
 import 'package:xml/xml.dart';
 import '../models/Workflow.dart';
 import '../models/WorkflowStep.dart';
@@ -29,7 +30,8 @@ class ConfigParser {
           .map((e) => e.text.trim())
           .toList();
 
-      result.add(Workflow(names: names, languages: langs, steps: steps));
+      result.add(Workflow(
+          names: names, languages: langs, steps: steps, sourceFile: assetPath));
     }
     return result;
   }
@@ -74,9 +76,9 @@ class ConfigParser {
       final target = _toInt(valueEl.text);
 
       // Beschreibung aus dem ersten Child-Attribut "cond"
-      final condAttr =
-          cond.children.whereType<XmlElement>().first.getAttribute('cond') ??
-              '';
+      final langNode = cond.findElements(language).firstOrNull;
+      final condAttr = langNode?.getAttribute('cond') ??
+          cond.children.whereType<XmlElement>().first.getAttribute('cond') ?? '';
 
       out.add(
         StepCondition(
@@ -96,6 +98,10 @@ class ConfigParser {
     if (mediaNode.findElements('image').isNotEmpty) {
       final path = _localisedText(mediaNode.findElements('image').first);
       return ImageMedia(assetPath: path);
+    }
+    if (mediaNode.findElements('video').isNotEmpty) {
+      final path = _localisedText(mediaNode.findElements('video').first);
+      return VideoMedia(assetPath: path);
     }
     // VideoMedia & Co. könnt ihr später nachrüsten
     throw UnsupportedError('Unsupported <media> type in XML.');
@@ -118,8 +124,13 @@ class ConfigParser {
   String _localisedText(XmlElement parent) {
     final langNode = parent.findElements(language).firstOrNull;
     if (langNode != null) return langNode.text.trim();
-    // sonst ersten Child-Element-Text
-    return parent.children.whereType<XmlElement>().first.text.trim();
+
+    // Sonst versuche das erste Kind-Element
+    final firstChild = parent.children.whereType<XmlElement>().firstOrNull;
+    if (firstChild != null) return firstChild.text.trim();
+
+    // Wenn gar nichts gefunden wurde
+    return '';
   }
 
   int _toInt(String? raw) =>
